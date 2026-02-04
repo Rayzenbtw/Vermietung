@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="10" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.HelloController">
+
+    <padding>
+        <Insets bottom="15" left="15" right="15" top="15" />
+    </padding>
+
+    <!-- Überschrift der Anwendung -->
+    <HBox alignment="CENTER" style="-fx-background-color: #2196F3; -fx-padding: 15;">
+        <Label text="Immobilienverwaltungssystem" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20" />
+            </font>
+        </Label>
+    </HBox>
+
+    <!-- TabPane mit Bereichen -->
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <!-- ================== TAB 1: VERMIETER ================== -->
+        <Tab text=" Vermieter">
+            <BorderPane>
+                <!-- Tabelle -->
+                <center>
+                    <TableView fx:id="vermieterTable" BorderPane.alignment="CENTER">
+                        <columns>
+                            <TableColumn fx:id="vermieterVNrCol" prefWidth="80" text="VNr" />
+                            <TableColumn fx:id="vermieterNameCol" prefWidth="200" text="Nachname" />
+                            <TableColumn fx:id="vermieterVornameCol" prefWidth="200" text="Vorname" />
+                        </columns>
+                    </TableView>
+                </center>
+
+                <!-- Verwaltungspanel rechts -->
+                <right>
+                    <VBox prefWidth="320" spacing="15" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ddd;">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text=" Vermieter hinzufügen" />
+                        <Separator />
+
+                        <Label text="Nachname:" />
+                        <TextField fx:id="vermieterNameField" promptText="z.B.: Müller" />
+
+                        <Label text="Vorname:" />
+                        <TextField fx:id="vermieterVornameField" promptText="z.B.: Hans" />
+
+                        <Button maxWidth="Infinity" onAction="#onVermieterCreate" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text=" Erstellen (CREATE)" />
+
+                        <Separator />
+
+                        <Label style="-fx-font-weight: bold;" text="Verwaltung:" />
+
+                        <Button maxWidth="Infinity" onAction="#onVermieterUpdate" style="-fx-background-color: #FF9800; -fx-text-fill: white;" text=" Bearbeiten (UPDATE)" />
+
+                        <Button maxWidth="Infinity" onAction="#onVermieterDelete" style="-fx-background-color: #f44336; -fx-text-fill: white;" text=" Löschen (DELETE)" />
+
+                        <Button maxWidth="Infinity" onAction="#onVermieterRefresh" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text=" Aktualisieren (READ)" />
+                    </VBox>
+                </right>
+            </BorderPane>
+        </Tab>
+
+        <!-- ================== TAB 2: OBJEKT ================== -->
+        <Tab text="Immobilienobjekte (Objekt)">
+            <BorderPane>
+                <!-- Tabelle -->
+                <center>
+                    <TableView fx:id="objektTable" BorderPane.alignment="CENTER">
+                        <columns>
+                            <TableColumn fx:id="objektONrCol" prefWidth="60" text="ONr" />
+                            <TableColumn fx:id="objektGroesseCol" prefWidth="120" text="Größe (m²)" />
+                            <TableColumn fx:id="objektMietpreisCol" prefWidth="120" text="Mietpreis (€)" />
+                            <TableColumn fx:id="objektVNrCol" prefWidth="60" text="VNr" />
+                            <TableColumn fx:id="objektVermieterCol" prefWidth="200" text="Vermieter" />
+                        </columns>
+                    </TableView>
+                </center>
+
+                <!-- Verwaltungspanel rechts -->
+                <right>
+                    <VBox prefWidth="320" spacing="15" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ddd;">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Objekt hinzufügen" />
+                        <Separator />
+
+                        <Label text="Größe (m²):" />
+                        <TextField fx:id="objektGroesseField" promptText="75.50" />
+
+                        <Label text="Mietpreis (€):" />
+                        <TextField fx:id="objektMietpreisField" promptText="1200.00" />
+
+                        <Label text="Vermieter:" />
+                        <ComboBox fx:id="objektVermieterCombo" maxWidth="Infinity" promptText="Auswählen..." />
+
+                        <Button maxWidth="Infinity" onAction="#onObjektCreate" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Erstellen (CREATE)" />
+
+                        <Separator />
+
+                        <Label style="-fx-font-weight: bold;" text="Verwaltung:" />
+
+                        <Button maxWidth="Infinity" onAction="#onObjektUpdate" style="-fx-background-color: #FF9800; -fx-text-fill: white;" text="Bearbeiten (UPDATE)" />
+
+                        <Button maxWidth="Infinity" onAction="#onObjektDelete" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Löschen (DELETE)" />
+
+                        <Button maxWidth="Infinity" onAction="#onObjektRefresh" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Aktualisieren (READ)" />
+                    </VBox>
+                </right>
+            </BorderPane>
+        </Tab>
+
+        <!-- ================== TAB 3: MIETER ================== -->
+        <Tab text="Mieter">
+            <BorderPane>
+                <!-- Tabelle -->
+                <center>
+                    <TableView fx:id="mieterTable" BorderPane.alignment="CENTER">
+                        <columns>
+                            <TableColumn fx:id="mieterMNrCol" prefWidth="80" text="MNr" />
+                            <TableColumn fx:id="mieterNameCol" prefWidth="200" text="Nachname" />
+                            <TableColumn fx:id="mieterVornameCol" prefWidth="200" text="Vorname" />
+                        </columns>
+                    </TableView>
+                </center>
+
+                <!-- Verwaltungspanel rechts -->
+                <right>
+                    <VBox prefWidth="320" spacing="15" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ddd;">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Mieter hinzufügen" />
+                        <Separator />
+
+                        <Label text="Nachname:" />
+                        <TextField fx:id="mieterNameField" promptText="z.B.: Koch" />
+
+                        <Label text="Vorname:" />
+                        <TextField fx:id="mieterVornameField" promptText="z.B.: Maria" />
+
+                        <Button maxWidth="Infinity" onAction="#onMieterCreate" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Erstellen (CREATE)" />
+
+                        <Separator />
+
+                        <Label style="-fx-font-weight: bold;" text="Verwaltung:" />
+
+                        <Button maxWidth="Infinity" onAction="#onMieterUpdate" style="-fx-background-color: #FF9800; -fx-text-fill: white;" text="Bearbeiten (UPDATE)" />
+
+                        <Button maxWidth="Infinity" onAction="#onMieterDelete" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Löschen (DELETE)" />
+
+                        <Button maxWidth="Infinity" onAction="#onMieterRefresh" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Aktualisieren (READ)" />
+                    </VBox>
+                </right>
+            </BorderPane>
+        </Tab>
+
+        <!-- ================== TAB 4: VERMIETUNG ================== -->
+        <Tab text="Vermietungen">
+            <BorderPane>
+                <!-- Tabelle -->
+                <center>
+                    <TableView fx:id="vermietungTable" BorderPane.alignment="CENTER">
+                        <columns>
+                            <TableColumn fx:id="vermietungVMNrCol" prefWidth="60" text="VMNr" />
+                            <TableColumn fx:id="vermietungMieterCol" prefWidth="180" text="Mieter" />
+                            <TableColumn fx:id="vermietungObjektCol" prefWidth="180" text="Objekt" />
+                            <TableColumn fx:id="vermietungADatumCol" prefWidth="120" text="Anfangsdatum" />
+                            <TableColumn fx:id="vermietungEDatumCol" prefWidth="120" text="Enddatum" />
+                        </columns>
+                    </TableView>
+                </center>
+
+                <!-- Verwaltungspanel rechts -->
+                <right>
+                    <VBox prefWidth="320" spacing="15" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ddd;">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="➕ Vermietung erstellen" />
+                        <Separator />
+
+                        <Label text="Mieter:" />
+                        <ComboBox fx:id="vermietungMieterCombo" maxWidth="Infinity" promptText="Auswählen..." />
+
+                        <Label text="Objekt:" />
+                        <ComboBox fx:id="vermietungObjektCombo" maxWidth="Infinity" promptText="Auswählen..." />
+
+                        <Label text="Anfangsdatum:" />
+                        <DatePicker fx:id="vermietungADatumPicker" maxWidth="Infinity" promptText="Datum wählen" />
+
+                        <Label text="Enddatum (optional):" />
+                        <DatePicker fx:id="vermietungEDatumPicker" maxWidth="Infinity" promptText="Optional" />
+
+                        <Button maxWidth="Infinity" onAction="#onVermietungCreate" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Erstellen (CREATE)" />
+
+                        <Separator />
+
+                        <Label style="-fx-font-weight: bold;" text="Verwaltung:" />
+
+                        <Button maxWidth="Infinity" onAction="#onVermietungUpdate" style="-fx-background-color: #FF9800; -fx-text-fill: white;" text=" Bearbeiten (UPDATE)" />
+
+                        <Button maxWidth="Infinity" onAction="#onVermietungDelete" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Löschen (DELETE)" />
+
+                        <Button maxWidth="Infinity" onAction="#onVermietungRefresh" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Aktualisieren (READ)" />
+                    </VBox>
+                </right>
+            </BorderPane>
+        </Tab>
+
+    </TabPane>
+
+</VBox>
