@@ -6,26 +6,26 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-    // Параметры подключения к базе данных
+    // Datenbank-Verbindungsparameter
     private static final String URL = "jdbc:mysql://localhost:3306/vermietung";
-    private static final String USERNAME = "root";  // Ваш логин MySQL
-    private static final String PASSWORD = "03082006";      // Ваш пароль MySQL
+    private static final String USERNAME = "root";  // Ihr MySQL-Benutzername
+    private static final String PASSWORD = "03082006";      // Ihr MySQL-Passwort
 
     private static Connection connection = null;
 
-    // Приватный конструктор для Singleton паттерна
+    // Privater Konstruktor für Singleton-Muster
     private DBConnection() {}
 
     /**
-     * Получить подключение к базе данных.
-     * Если подключение не существует или закрыто - создаёт новое.
+     * Datenbankverbindung abrufen.
+     * Wenn die Verbindung nicht existiert oder geschlossen ist, wird eine neue erstellt.
      *
-     * @return Connection объект для работы с БД
-     * @throws SQLException если произошла ошибка подключения
+     * @return Connection-Objekt für die Arbeit mit der Datenbank
+     * @throws SQLException wenn ein Verbindungsfehler auftritt
      */
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
-            // Установка соединения
+            // Verbindung herstellen
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
         }
@@ -33,7 +33,7 @@ public class DBConnection {
     }
 
     /**
-     * Закрыть подключение к базе данных.
+     * Datenbankverbindung schließen.
      */
     public static void closeConnection() {
         if (connection != null) {
@@ -46,9 +46,9 @@ public class DBConnection {
     }
 
     /**
-     * Проверка подключения к БД.
+     * Überprüfung der Datenbankverbindung.
      *
-     * @return true если подключение активно
+     * @return true wenn die Verbindung aktiv ist
      */
     public static boolean testConnection() {
         try {

@@ -1,15 +1,15 @@
 package model;
 
 /**
- * Модель данных для таблицы Mieter (Арендатор).
+ * Datenmodell für die Tabelle Mieter (Mieter).
  */
 public class Mieter {
 
-    private int mNr;           // Номер арендатора (Primary Key)
-    private String name;       // Фамилия
-    private String vorname;    // Имя
+    private int mNr;           // Mieternummer (Primary Key)
+    private String name;       // Nachname
+    private String vorname;    // Vorname
 
-    // Конструкторы
+    // Konstruktoren
     public Mieter() {}
 
     public Mieter(int mNr, String name, String vorname) {
@@ -23,7 +23,7 @@ public class Mieter {
         this.vorname = vorname;
     }
 
-    // Геттеры и сеттеры
+    // Getter und Setter
     public int getMNr() {
         return mNr;
     }

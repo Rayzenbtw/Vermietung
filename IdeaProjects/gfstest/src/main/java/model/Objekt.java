@@ -3,19 +3,19 @@ package model;
 import java.math.BigDecimal;
 
 /**
- * Модель данных для таблицы Objekt (Объект недвижимости).
+ * Datenmodell für die Tabelle Objekt (Immobilienobjekt).
  */
 public class Objekt {
 
-    private int oNr;                // Номер объекта (Primary Key)
-    private BigDecimal groesse;     // Площадь (в кв.м)
-    private BigDecimal mietpreis;   // Цена аренды
-    private int vNr;                // Номер арендодателя (Foreign Key)
+    private int oNr;                // Objektnummer (Primary Key)
+    private BigDecimal groesse;     // Fläche (in qm)
+    private BigDecimal mietpreis;   // Mietpreis
+    private int vNr;                // Vermieternummer (Foreign Key)
 
-    // Дополнительное поле для отображения (не хранится в БД)
-    private String vermieterName;   // Имя арендодателя для UI
+    // Zusätzliches Feld für die Anzeige (nicht in der Datenbank gespeichert)
+    private String vermieterName;   // Vermieter-Name für UI
 
-    // Конструкторы
+    // Konstruktoren
     public Objekt() {}
 
     public Objekt(int oNr, BigDecimal groesse, BigDecimal mietpreis, int vNr) {
@@ -31,7 +31,7 @@ public class Objekt {
         this.vNr = vNr;
     }
 
-    // Геттеры и сеттеры
+    // Getter und Setter
     public int getONr() {
         return oNr;
     }

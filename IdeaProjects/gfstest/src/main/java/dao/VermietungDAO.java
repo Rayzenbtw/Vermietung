@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO для работы с таблицей Vermietung (Аренда).
+ * DAO für die Arbeit mit der Tabelle Vermietung.
  */
 
 public class VermietungDAO {
@@ -55,7 +55,7 @@ public class VermietungDAO {
 
         String sql = "SELECT v.VMNr, v.MNr, v.ONr, v.ADatum, v.EDatum, " +
                 "CONCAT(m.Vorname, ' ', m.Name) AS MieterName, " +
-                "CONCAT('Objekt #', o.ONr, ' (', o.Groesse, 'м^2)') AS ObjektInfo " +
+                "CONCAT('Objekt #', o.ONr, ' (', o.Groesse, 'm^2)') AS ObjektInfo " +
                 "FROM Vermietung v " +
                 "LEFT JOIN Mieter m ON v.MNr = m.MNr " +
                 "LEFT JOIN Objekt o ON v.ONr = o.ONr " +

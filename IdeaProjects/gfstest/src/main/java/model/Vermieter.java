@@ -1,32 +1,32 @@
 package model;
 
 /**
- * Модель данных для таблицы Vermieter (Арендодатель).
- * Каждый объект этого класса представляет одну запись в таблице.
+ * Datenmodell für die Tabelle Vermieter (Vermieter).
+ * Jedes Objekt dieser Klasse repräsentiert einen Datensatz in der Tabelle.
  */
 public class Vermieter {
 
-    private int vNr;           // Номер арендодателя (Primary Key)
-    private String name;       // Фамилия
-    private String vorname;    // Имя
+    private int vNr;           // Vermieternummer (Primary Key)
+    private String name;       // Nachname
+    private String vorname;    // Vorname
 
-    // Конструктор по умолчанию
+    // Standard-Konstruktor
     public Vermieter() {}
 
-    // Конструктор с параметрами
+    // Konstruktor mit Parametern
     public Vermieter(int vNr, String name, String vorname) {
         this.vNr = vNr;
         this.name = name;
         this.vorname = vorname;
     }
 
-    // Конструктор без ID (для создания новых записей)
+    // Konstruktor ohne ID (für neue Datensätze)
     public Vermieter(String name, String vorname) {
         this.name = name;
         this.vorname = vorname;
     }
 
-    // Геттеры и сеттеры
+    // Getter und Setter
     public int getVNr() {
         return vNr;
     }
@@ -51,7 +51,7 @@ public class Vermieter {
         this.vorname = vorname;
     }
 
-    // Переопределение метода toString для удобного отображения
+    // Überschreibung der toString-Methode für eine einfache Anzeige
     @Override
     public String toString() {
         return "Vermieter{" +
