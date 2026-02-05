@@ -14,19 +14,16 @@
         <Insets top="15" right="15" bottom="15" left="15"/>
     </padding>
 
-    <!-- Заголовок приложения -->
     <HBox alignment="CENTER" style="-fx-background-color: #2196F3; -fx-padding: 15;">
-        <Label text="🏢 Vermieter Verwaltungssystem - JDBC CRUD Demo" textFill="WHITE">
+        <Label text="Vermietung" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="20"/>
             </font>
         </Label>
     </HBox>
 
-    <!-- Основной контент -->
     <BorderPane VBox.vgrow="ALWAYS">
 
-        <!-- Таблица по центру -->
         <center>
             <VBox spacing="10" style="-fx-padding: 10;">
                 <Label text="Vermieter Tabelle" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
@@ -41,20 +38,19 @@
             </VBox>
         </center>
 
-        <!-- Панель управления справа -->
         <right>
             <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #ddd;" prefWidth="350">
 
-                <Label text="➕ Vermieter hinzufügen" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Vermieter hinzufügen" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
                 <Separator/>
 
-                <Label text="Name (Nachname):"/>
+                <Label text="Name:"/>
                 <TextField fx:id="nameField" promptText="z.B.: Müller"/>
 
                 <Label text="Vorname:"/>
                 <TextField fx:id="vornameField" promptText="z.B.: Hans"/>
 
-                <Button text="✅ Erstellen (CREATE)" onAction="#onCreate"
+                <Button text="CREATE" onAction="#onCreate"
                         style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"
                         maxWidth="Infinity" prefHeight="40"/>
 
@@ -62,24 +58,19 @@
 
                 <Label text="Verwaltung:" style="-fx-font-weight: bold;"/>
 
-                <Button text="✏️ Bearbeiten (UPDATE)" onAction="#onUpdate"
+                <Button text="UPDATE" onAction="#onUpdate"
                         style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 13px;"
                         maxWidth="Infinity" prefHeight="35"/>
 
-                <Button text="🗑️ Löschen (DELETE)" onAction="#onDelete"
+                <Button text="DELETE" onAction="#onDelete"
                         style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 13px;"
                         maxWidth="Infinity" prefHeight="35"/>
 
-                <Button text="🔄 Aktualisieren (READ)" onAction="#onRefresh"
+                <Button text="Aktualisieren (READ)" onAction="#onRefresh"
                         style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 13px;"
                         maxWidth="Infinity" prefHeight="35"/>
 
                 <Separator/>
-
-                <Label text="💡 Hinweis:" style="-fx-font-weight: bold; -fx-text-fill: #666;"/>
-                <Label text="• Wählen Sie eine Zeile zum Bearbeiten/Löschen"
-                       wrapText="true"
-                       style="-fx-text-fill: #666; -fx-font-size: 11px;"/>
 
             </VBox>
         </right>

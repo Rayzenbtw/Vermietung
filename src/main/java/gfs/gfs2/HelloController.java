@@ -9,16 +9,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Controller für die Vermieter-Verwaltung.
- * Implementiert alle CRUD-Operationen.
- */
 public class HelloController {
 
-    // DAO für Datenbankzugriff
     private final VermieterDAO vermieterDAO = new VermieterDAO();
 
-    // FXML Elemente - TableView
+
     @FXML private TableView<Vermieter> vermieterTable;
     @FXML private TableColumn<Vermieter, Integer> vNrCol;
     @FXML private TableColumn<Vermieter, String> nameCol;
@@ -33,7 +28,7 @@ public class HelloController {
      */
     @FXML
     public void initialize() {
-        System.out.println("🚀 Controller wird initialisiert...");
+        System.out.println("Controller wird initialisiert...");
 
         // Tabellenspalten mit Modell-Properties verknüpfen
         vNrCol.setCellValueFactory(new PropertyValueFactory<>("vNr"));
@@ -43,7 +38,7 @@ public class HelloController {
         // Daten laden
         loadData();
 
-        System.out.println("✅ Controller initialisiert!");
+        System.out.println("Controller initialisiert!");
     }
 
     /**
@@ -51,7 +46,6 @@ public class HelloController {
      */
     @FXML
     private void onCreate() {
-        System.out.println("📝 CREATE Operation gestartet...");
 
         String name = nameField.getText().trim();
         String vorname = vornameField.getText().trim();
@@ -80,7 +74,6 @@ public class HelloController {
      */
     @FXML
     private void onUpdate() {
-        System.out.println("✏️ UPDATE Operation gestartet...");
 
         Vermieter selected = vermieterTable.getSelectionModel().getSelectedItem();
 
@@ -124,13 +117,8 @@ public class HelloController {
         }
     }
 
-    /**
-     * DELETE - Ausgewählten Vermieter löschen
-     */
     @FXML
     private void onDelete() {
-        System.out.println("🗑️ DELETE Operation gestartet...");
-
         Vermieter selected = vermieterTable.getSelectionModel().getSelectedItem();
 
         if (selected == null) {
@@ -165,23 +153,20 @@ public class HelloController {
      */
     @FXML
     private void onRefresh() {
-        System.out.println("🔄 REFRESH Operation gestartet...");
         loadData();
         showAlert("Aktualisiert", "Daten wurden erfolgreich aktualisiert!", Alert.AlertType.INFORMATION);
     }
 
-    /**
-     * Daten aus Datenbank laden und in Tabelle anzeigen
-     */
+
     private void loadData() {
         try {
             List<Vermieter> list = vermieterDAO.getAllVermieter();
             ObservableList<Vermieter> observableList = FXCollections.observableArrayList(list);
             vermieterTable.setItems(observableList);
 
-            System.out.println("📊 Geladen: " + list.size() + " Vermieter");
+            System.out.println("Geladen: " + list.size() + " Vermieter");
         } catch (Exception e) {
-            System.err.println("❌ Fehler beim Laden der Daten!");
+            System.err.println("Fehler beim Laden der Daten!");
             e.printStackTrace();
             showAlert("Fehler", "Daten konnten nicht geladen werden!\n" + e.getMessage(), Alert.AlertType.ERROR);
         }

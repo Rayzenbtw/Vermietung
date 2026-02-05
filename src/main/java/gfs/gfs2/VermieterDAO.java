@@ -4,10 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * DAO (Data Access Object) für die Vermieter-Tabelle.
- * Implementiert alle CRUD-Operationen.
- */
+
+
 public class VermieterDAO {
 
     /**
@@ -19,31 +17,29 @@ public class VermieterDAO {
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            // Параметры в правильном порядке
             pstmt.setString(1, vermieter.getName());      // Параметр 1 = Name (Nachname)
             pstmt.setString(2, vermieter.getVorname());   // Параметр 2 = Vorname
 
-            System.out.println("📝 SQL: " + sql);
+            System.out.println("SQL: " + sql);
             System.out.println("   Параметр 1 (Name): " + vermieter.getName());
             System.out.println("   Параметр 2 (Vorname): " + vermieter.getVorname());
 
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {
-                // Получаем сгенерированный ID
                 try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
                         vermieter.setVNr(generatedKeys.getInt(1));
                     }
                 }
-                System.out.println("✅ CREATE erfolgreich: " + vermieter);
+                System.out.println("CREATE erfolgreich: " + vermieter);
                 return true;
             } else {
-                System.err.println("❌ Keine Zeilen wurden eingefügt!");
+                System.err.println("Keine Zeilen wurden eingefügt!");
             }
 
         } catch (SQLException e) {
-            System.err.println("❌ CREATE Fehler!");
+            System.err.println("Fehler!");
             System.err.println("   Vermieter: Name='" + vermieter.getName() + "', Vorname='" + vermieter.getVorname() + "'");
             e.printStackTrace();
         }
@@ -53,6 +49,7 @@ public class VermieterDAO {
     /**
      * READ - Alle Vermieter aus der Datenbank holen
      */
+
     public List<Vermieter> getAllVermieter() {
         List<Vermieter> list = new ArrayList<>();
         String sql = "SELECT VNr, Name, Vorname FROM Vermieter ORDER BY VNr";
@@ -70,10 +67,10 @@ public class VermieterDAO {
                 list.add(vermieter);
             }
 
-            System.out.println("📋 READ erfolgreich: " + list.size() + " Einträge geladen");
+            System.out.println("READ erfolgreich: " + list.size() + " Einträge geladen");
 
         } catch (SQLException e) {
-            System.err.println("❌ READ Fehler!");
+            System.err.println("Fehler!");
             e.printStackTrace();
         }
 
@@ -98,13 +95,13 @@ public class VermieterDAO {
                             rs.getString("Name"),
                             rs.getString("Vorname")
                     );
-                    System.out.println("✅ READ BY ID erfolgreich: " + vermieter);
+                    System.out.println("erfolgreich: " + vermieter);
                     return vermieter;
                 }
             }
 
         } catch (SQLException e) {
-            System.err.println("❌ READ BY ID Fehler für VNr=" + vNr);
+            System.err.println("Fehler für VNr=" + vNr);
             e.printStackTrace();
         }
 
@@ -124,22 +121,22 @@ public class VermieterDAO {
             pstmt.setString(2, vermieter.getVorname());   // Параметр 2 = Vorname
             pstmt.setInt(3, vermieter.getVNr());          // Параметр 3 = VNr
 
-            System.out.println("📝 SQL: " + sql);
-            System.out.println("   Параметр 1 (Name): " + vermieter.getName());
-            System.out.println("   Параметр 2 (Vorname): " + vermieter.getVorname());
-            System.out.println("   Параметр 3 (VNr): " + vermieter.getVNr());
+            System.out.println(" SQL: " + sql);
+            System.out.println("   (Name): " + vermieter.getName());
+            System.out.println("   (Vorname): " + vermieter.getVorname());
+            System.out.println("   (VNr): " + vermieter.getVNr());
 
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {
-                System.out.println("✅ UPDATE erfolgreich: " + vermieter);
+                System.out.println("UPDATE : " + vermieter);
                 return true;
             } else {
-                System.err.println("❌ Keine Zeilen wurden aktualisiert! VNr=" + vermieter.getVNr() + " existiert nicht?");
+                System.err.println("Keine Zeilen wurden aktualisiert! VNr=" + vermieter.getVNr() + " existiert nicht?");
             }
 
         } catch (SQLException e) {
-            System.err.println("❌ UPDATE Fehler!");
+            System.err.println("Fehler!");
             e.printStackTrace();
         }
 
@@ -157,21 +154,21 @@ public class VermieterDAO {
 
             pstmt.setInt(1, vNr);
 
-            System.out.println("📝 SQL: " + sql);
-            System.out.println("   Параметр 1 (VNr): " + vNr);
+            System.out.println("SQL: " + sql);
+            System.out.println(" Parameter (VNr): " + vNr);
 
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {
-                System.out.println("✅ DELETE erfolgreich: VNr=" + vNr);
+
                 return true;
             } else {
-                System.err.println("❌ Keine Zeilen wurden gelöscht! VNr=" + vNr + " existiert nicht?");
+                System.err.println("Keine Zeilen wurden gelöscht! VNr=" + vNr + " existiert nicht?");
             }
 
         } catch (SQLException e) {
-            System.err.println("❌ DELETE Fehler!");
-            System.err.println("   Möglicherweise existieren abhängige Datensätze (Foreign Key Constraint)");
+            System.err.println("Fehler!");
+            System.err.println(" Foreign Key Constraint");
             e.printStackTrace();
         }
 
