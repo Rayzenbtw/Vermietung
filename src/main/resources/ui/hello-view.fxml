@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="gfs.gfs2.HelloController"
-      spacing="10" style="-fx-background-color: #f5f5f5;">
+<VBox spacing="10" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gfs.gfs2.HelloController">
 
     <padding>
-        <Insets top="15" right="15" bottom="15" left="15"/>
+        <Insets bottom="15" left="15" right="15" top="15" />
     </padding>
 
-    <HBox alignment="CENTER" style="-fx-background-color: #2196F3; -fx-padding: 15;">
-        <Label text="Vermietung" textFill="WHITE">
+    <HBox alignment="CENTER">
+        <Label text="Vermietung">
             <font>
-                <Font name="System Bold" size="20"/>
+                <Font name="System Bold" size="20" />
             </font>
         </Label>
     </HBox>
@@ -26,51 +23,43 @@
 
         <center>
             <VBox spacing="10" style="-fx-padding: 10;">
-                <Label text="Vermieter Tabelle" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Vermieter Tabelle" />
 
                 <TableView fx:id="vermieterTable" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="vNrCol" text="VNr" prefWidth="80"/>
-                        <TableColumn fx:id="nameCol" text="Name" prefWidth="250"/>
-                        <TableColumn fx:id="vornameCol" text="Vorname" prefWidth="250"/>
+                        <TableColumn fx:id="vNrCol" prefWidth="80" text="VNr" />
+                        <TableColumn fx:id="nameCol" prefWidth="250" text="Name" />
+                        <TableColumn fx:id="vornameCol" prefWidth="250" text="Vorname" />
                     </columns>
                 </TableView>
             </VBox>
         </center>
 
         <right>
-            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #ddd;" prefWidth="350">
+            <VBox prefWidth="350" spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #ddd;">
 
-                <Label text="Vermieter hinzufügen" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-                <Separator/>
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Vermieter hinzufügen" />
+                <Separator />
 
-                <Label text="Name:"/>
-                <TextField fx:id="nameField" promptText="z.B.: Müller"/>
+                <Label text="Name:" />
+                <TextField fx:id="nameField" promptText="z.B.: Müller" />
 
-                <Label text="Vorname:"/>
-                <TextField fx:id="vornameField" promptText="z.B.: Hans"/>
+                <Label text="Vorname:" />
+                <TextField fx:id="vornameField" promptText="z.B.: Hans" />
 
-                <Button text="CREATE" onAction="#onCreate"
-                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"
-                        maxWidth="Infinity" prefHeight="40"/>
+                <Button maxWidth="Infinity" onAction="#onCreate" prefHeight="40" text="CREATE" />
 
-                <Separator/>
+                <Separator />
 
-                <Label text="Verwaltung:" style="-fx-font-weight: bold;"/>
+                <Label style="-fx-font-weight: bold;" text="Verwaltung:" />
 
-                <Button text="UPDATE" onAction="#onUpdate"
-                        style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 13px;"
-                        maxWidth="Infinity" prefHeight="35"/>
+                <Button maxWidth="Infinity" onAction="#onUpdate" prefHeight="35" text="UPDATE" />
 
-                <Button text="DELETE" onAction="#onDelete"
-                        style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 13px;"
-                        maxWidth="Infinity" prefHeight="35"/>
+                <Button maxWidth="Infinity" onAction="#onDelete" prefHeight="35" text="DELETE" />
 
-                <Button text="Aktualisieren (READ)" onAction="#onRefresh"
-                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 13px;"
-                        maxWidth="Infinity" prefHeight="35"/>
+                <Button maxWidth="Infinity" onAction="#onRefresh" prefHeight="35" text="Aktualisieren (READ)" />
 
-                <Separator/>
+                <Separator />
 
             </VBox>
         </right>
