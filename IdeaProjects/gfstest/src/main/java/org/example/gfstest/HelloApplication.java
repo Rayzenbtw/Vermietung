@@ -9,8 +9,8 @@ import util.DBConnection;
 import java.io.IOException;
 
 /**
- * Главный класс для запуска JavaFX приложения.
- * Загружает FXML файл и инициализирует UI.
+ * Hauptklasse zum Starten der JavaFX-Anwendung.
+ * Lädt die FXML-Datei und initialisiert die Benutzeroberfläche.
  */
 public class HelloApplication extends Application {
 
@@ -32,7 +32,7 @@ public class HelloApplication extends Application {
         stage.setMinWidth(1200);
         stage.setMinHeight(700);
 
-        // wir schliessen die verbindung
+        // Wir schließen die Verbindung
         stage.setOnCloseRequest(event -> {
             DBConnection.closeConnection();
         });

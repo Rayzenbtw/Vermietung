@@ -3,21 +3,21 @@ package model;
 import java.time.LocalDate;
 
 /**
- * Модель данных для таблицы Vermietung (Аренда).
+ * Datenmodell für die Tabelle Vermietung (Vermietung).
  */
 public class Vermietung {
 
-    private int vmNr;              // Номер аренды (Primary Key)
-    private int mNr;               // Номер арендатора (Foreign Key)
-    private int oNr;               // Номер объекта (Foreign Key)
-    private LocalDate aDatum;      // Дата начала аренды
-    private LocalDate eDatum;      // Дата окончания аренды (может быть null)
+    private int vmNr;              // Vermietungsnummer (Primary Key)
+    private int mNr;               // Mieternummer (Foreign Key)
+    private int oNr;               // Objektnummer (Foreign Key)
+    private LocalDate aDatum;      // Anfangsdatum der Vermietung
+    private LocalDate eDatum;      // Enddatum der Vermietung (kann null sein)
 
-    // Дополнительные поля для UI
-    private String mieterName;     // Имя арендатора
-    private String objektInfo;     // Информация об объекте
+    // Zusätzliche Felder für UI
+    private String mieterName;     // Mieter-Name
+    private String objektInfo;     // Objekt-Information
 
-    // Конструкторы
+    // Konstruktoren
     public Vermietung() {}
 
     public Vermietung(int vmNr, int mNr, int oNr, LocalDate aDatum, LocalDate eDatum) {
@@ -35,7 +35,7 @@ public class Vermietung {
         this.eDatum = eDatum;
     }
 
-    // Геттеры и сеттеры
+    // Getter und Setter
     public int getVmNr() {
         return vmNr;
     }

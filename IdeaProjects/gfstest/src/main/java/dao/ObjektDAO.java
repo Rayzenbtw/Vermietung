@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO (Data Access Object) для работы с таблицей Objekt.
- * Реализует все CRUD операции: Create, Read, Update, Delete.
+ * DAO (Data Access Object) für die Arbeit mit der Tabelle Objekt.
+ * Implementiert alle CRUD-Operationen: Create, Read, Update, Delete.
  */
 public class ObjektDAO {
 
@@ -20,15 +20,15 @@ public class ObjektDAO {
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            // Установка параметров запроса
+            // Parameter für die Abfrage setzen
             pstmt.setBigDecimal(1, objekt.getGroesse());
             pstmt.setBigDecimal(2, objekt.getMietpreis());
             pstmt.setInt(3, objekt.getVNr());
 
-            // Выполнение запроса
+            // Abfrage ausführen
             int affectedRows = pstmt.executeUpdate();
 
-            // Получение сгенерированного ID
+            // Generierte ID abrufen
             if (affectedRows > 0) {
                 try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
@@ -48,7 +48,7 @@ public class ObjektDAO {
     public List<Objekt> getAllObjekte() {
         List<Objekt> objektList = new ArrayList<>();
 
-        // JOIN запрос для получения имени арендодателя
+        // JOIN-Abfrage zum Abrufen des Vermieter-Namens
         String sql = "SELECT o.ONr, o.Groesse, o.Mietpreis, o.VNr, " +
                 "CONCAT(v.Vorname, ' ', v.Name) AS VermieterName " +
                 "FROM Objekt o " +
@@ -59,7 +59,7 @@ public class ObjektDAO {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
-            // Обработка результатов запроса
+            // Verarbeitung der Abfrageergebnisse
             while (rs.next()) {
                 Objekt objekt = new Objekt();
                 objekt.setONr(rs.getInt("ONr"));

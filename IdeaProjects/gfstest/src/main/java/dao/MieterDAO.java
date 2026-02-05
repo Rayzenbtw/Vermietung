@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO для работы с таблицей Mieter (Арендатор).
+ * DAO für die Arbeit mit der Tabelle Mieter.
  */
 public class MieterDAO {
 
