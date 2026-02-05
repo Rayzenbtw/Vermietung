@@ -21,8 +21,8 @@ public class VermieterDAO {
             pstmt.setString(2, vermieter.getVorname());   // Параметр 2 = Vorname
 
             System.out.println("SQL: " + sql);
-            System.out.println("   Параметр 1 (Name): " + vermieter.getName());
-            System.out.println("   Параметр 2 (Vorname): " + vermieter.getVorname());
+            System.out.println("   Parameter 1 (Name): " + vermieter.getName());
+            System.out.println("   Parameter 2 (Vorname): " + vermieter.getVorname());
 
             int affectedRows = pstmt.executeUpdate();
 
